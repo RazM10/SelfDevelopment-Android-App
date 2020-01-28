@@ -90,6 +90,7 @@ public class AddTaskActivity extends AppCompatActivity {
         Task task = getFieldsValues();
         boolean result = TaskDB.addData(task);
         Toast.makeText(this, "Save: " + result, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public Task getFieldsValues() {
