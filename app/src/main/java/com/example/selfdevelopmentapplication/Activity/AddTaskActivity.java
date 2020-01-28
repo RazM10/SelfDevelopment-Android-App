@@ -29,6 +29,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     SpinnerHelper spinnerHelper = new SpinnerHelper();
     String TAG = "ListenerPosition";
+    Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,24 @@ public class AddTaskActivity extends AppCompatActivity {
         spinnerHelper.setSpinnerAdapter(this, StringArrays.situation, sp_situation);
         spinnerHelper.setSpinnerAdapter(this, StringArrays.priority, sp_priority);
         spinnerHelper.setSpinnerAdapter(this, StringArrays.complete, sp_complete);
+
+        //intent
+        String intentCheck=getIntent().getStringExtra("category");
+        if(intentCheck==null){
+            task=new Task();
+            task.setCategory(getIntent().getIntExtra("category",0));
+            task.setSituation(getIntent().getIntExtra("situation",0));
+            task.setCharacter(getIntent().getIntExtra("character",0));
+            task.setPriority(getIntent().getIntExtra("priority",0));
+            task.setComplete(getIntent().getIntExtra("complete",0));
+            task.setDate(getIntent().getStringExtra("date"));
+            task.setOutput(getIntent().getStringExtra("output"));
+            task.setDuration(getIntent().getStringExtra("duration"));
+            task.setDescription(getIntent().getStringExtra("description"));
+            task.setSolution(getIntent().getStringExtra("solution"));
+
+            sp_category.setSelection(task.getCategory());
+        }
     }
 
     private void listener() {

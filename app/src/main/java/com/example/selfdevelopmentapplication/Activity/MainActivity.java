@@ -1,5 +1,6 @@
 package com.example.selfdevelopmentapplication.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,12 +24,15 @@ public class MainActivity extends AppCompatActivity {
 
     AdapterTask adapterTask;
     ArrayList<Task> taskArrayList;
+
+    public static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         TaskDB.init(this);
+        context=MainActivity.this;
 
         fb_addNew=findViewById(R.id.fb_addNew);
         rv_task=findViewById(R.id.rv_task);

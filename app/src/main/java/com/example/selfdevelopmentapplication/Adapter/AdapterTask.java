@@ -1,6 +1,7 @@
 package com.example.selfdevelopmentapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.selfdevelopmentapplication.Activity.AddTaskActivity;
+import com.example.selfdevelopmentapplication.Activity.MainActivity;
 import com.example.selfdevelopmentapplication.GlobalItems.StringArrays;
 import com.example.selfdevelopmentapplication.Model.Task;
 import com.example.selfdevelopmentapplication.R;
@@ -38,8 +41,28 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
-        Task task = taskArrayList.get(position);
+        final Task task = taskArrayList.get(position);
         holder.tv_category.setText(StringArrays.category[task.getCategory()]);
+
+        holder.linearLayout_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, AddTaskActivity.class);
+
+                intent.putExtra("category",task.getCategory());
+                intent.putExtra("date",task.getDate());
+                intent.putExtra("situation",task.getSituation());
+                intent.putExtra("character",task.getCharacter());
+                intent.putExtra("output",task.getOutput());
+                intent.putExtra("priority",task.getPriority());
+                intent.putExtra("duration",task.getDuration());
+                intent.putExtra("complete",task.getComplete());
+                intent.putExtra("description",task.getDescription());
+                intent.putExtra("solution",task.getSolution());
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
