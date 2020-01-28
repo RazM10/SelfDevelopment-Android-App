@@ -1,4 +1,4 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.Helper;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class MainHelper {
+import com.example.selfdevelopmentapplication.R;
+
+public class SpinnerHelper {
     private int positionCategory = 0,positionCharacter=0,positionSituation=0,positionPriority=0,positionComplete=0;
 
     public void onItemSelectedListener(Spinner spinner, final int selectedSpinner) {

@@ -1,4 +1,4 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.Model;
 
 public class Task {
     int id;

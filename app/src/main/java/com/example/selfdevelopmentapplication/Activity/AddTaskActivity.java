@@ -1,4 +1,4 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.selfdevelopmentapplication.GlobalItems.StringArrays;
+import com.example.selfdevelopmentapplication.Helper.SpinnerHelper;
+import com.example.selfdevelopmentapplication.R;
+import com.example.selfdevelopmentapplication.Model.Task;
+import com.example.selfdevelopmentapplication.DB.TaskDB;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,7 +27,7 @@ public class AddTaskActivity extends AppCompatActivity {
     EditText et_date, et_output, et_priority, et_duration, et_complete, et_description, et_solution;
     Button btn_show, btn_save;
 
-    MainHelper mainHelper = new MainHelper();
+    SpinnerHelper spinnerHelper = new SpinnerHelper();
     String TAG = "ListenerPosition";
 
     @Override
@@ -54,19 +60,19 @@ public class AddTaskActivity extends AppCompatActivity {
         String formattedDate = df.format(c);
         tv_date.setText(formattedDate);
 
-        mainHelper.setSpinnerAdapter(this, CategoryString.category, sp_category);
-        mainHelper.setSpinnerAdapter(this, CategoryString.character, sp_character);
-        mainHelper.setSpinnerAdapter(this, CategoryString.situation, sp_situation);
-        mainHelper.setSpinnerAdapter(this, CategoryString.priority, sp_priority);
-        mainHelper.setSpinnerAdapter(this, CategoryString.complete, sp_complete);
+        spinnerHelper.setSpinnerAdapter(this, StringArrays.category, sp_category);
+        spinnerHelper.setSpinnerAdapter(this, StringArrays.character, sp_character);
+        spinnerHelper.setSpinnerAdapter(this, StringArrays.situation, sp_situation);
+        spinnerHelper.setSpinnerAdapter(this, StringArrays.priority, sp_priority);
+        spinnerHelper.setSpinnerAdapter(this, StringArrays.complete, sp_complete);
     }
 
     private void listener() {
-        mainHelper.onItemSelectedListener(sp_category, 1);
-        mainHelper.onItemSelectedListener(sp_character, 2);
-        mainHelper.onItemSelectedListener(sp_situation, 3);
-        mainHelper.onItemSelectedListener(sp_priority, 4);
-        mainHelper.onItemSelectedListener(sp_complete, 5);
+        spinnerHelper.onItemSelectedListener(sp_category, 1);
+        spinnerHelper.onItemSelectedListener(sp_character, 2);
+        spinnerHelper.onItemSelectedListener(sp_situation, 3);
+        spinnerHelper.onItemSelectedListener(sp_priority, 4);
+        spinnerHelper.onItemSelectedListener(sp_complete, 5);
 
         tv_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +84,9 @@ public class AddTaskActivity extends AppCompatActivity {
         btn_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddTaskActivity.this, "Position is: " + mainHelper.getPositionCategory()
-                                + " " + mainHelper.getPositionSituation() + " " + mainHelper.getPositionCharacter() + " " +
-                                mainHelper.getPositionPriority() + " " + mainHelper.getPositionComplete()
+                Toast.makeText(AddTaskActivity.this, "Position is: " + spinnerHelper.getPositionCategory()
+                                + " " + spinnerHelper.getPositionSituation() + " " + spinnerHelper.getPositionCharacter() + " " +
+                                spinnerHelper.getPositionPriority() + " " + spinnerHelper.getPositionComplete()
                         , Toast.LENGTH_SHORT).show();
             }
         });
@@ -95,14 +101,14 @@ public class AddTaskActivity extends AppCompatActivity {
 
     public Task getFieldsValues() {
         Task task = new Task();
-        task.setCategory(mainHelper.getPositionCategory());
+        task.setCategory(spinnerHelper.getPositionCategory());
         task.setDate(tv_date.getText().toString());
-        task.setSituation(mainHelper.getPositionSituation());
-        task.setCharacter(mainHelper.getPositionCharacter());
+        task.setSituation(spinnerHelper.getPositionSituation());
+        task.setCharacter(spinnerHelper.getPositionCharacter());
         task.setOutput(et_output.getText().toString());
-        task.setPriority(mainHelper.getPositionPriority());
+        task.setPriority(spinnerHelper.getPositionPriority());
         task.setDuration(et_duration.getText().toString());
-        task.setComplete(mainHelper.getPositionComplete());
+        task.setComplete(spinnerHelper.getPositionComplete());
         task.setDescription(et_description.getText().toString());
         task.setSolution(et_solution.getText().toString());
 

@@ -1,7 +1,9 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.DB;
 
 import android.content.Context;
 import android.database.Cursor;
+
+import com.example.selfdevelopmentapplication.Model.Task;
 
 import java.util.ArrayList;
 

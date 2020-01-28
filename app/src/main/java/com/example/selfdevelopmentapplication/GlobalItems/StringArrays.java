@@ -1,6 +1,6 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.GlobalItems;
 
-public class CategoryString {
+public class StringArrays {
 
     public static String[] category = new String[]{
             "Wrong",

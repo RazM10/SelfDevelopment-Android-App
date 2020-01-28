@@ -1,4 +1,4 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.selfdevelopmentapplication.Adapter.AdapterTask;
+import com.example.selfdevelopmentapplication.R;
+import com.example.selfdevelopmentapplication.Model.Task;
+import com.example.selfdevelopmentapplication.DB.TaskDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         fb_addNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddTaskActivity.class));
+                startActivity(new Intent(MainActivity.this, AddTaskActivity.class));
             }
         });
     }

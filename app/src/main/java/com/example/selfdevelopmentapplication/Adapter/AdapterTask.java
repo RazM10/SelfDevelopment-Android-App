@@ -1,17 +1,18 @@
-package com.example.selfdevelopmentapplication;
+package com.example.selfdevelopmentapplication.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.selfdevelopmentapplication.GlobalItems.StringArrays;
+import com.example.selfdevelopmentapplication.Model.Task;
+import com.example.selfdevelopmentapplication.R;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
     @Override
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
         Task task = taskArrayList.get(position);
-        holder.tv_category.setText(CategoryString.category[task.getCategory()]);
+        holder.tv_category.setText(StringArrays.category[task.getCategory()]);
     }
 
     @Override
