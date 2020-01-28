@@ -29,8 +29,6 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        TaskDB.init(this);
-
         init();
         listener();
     }
