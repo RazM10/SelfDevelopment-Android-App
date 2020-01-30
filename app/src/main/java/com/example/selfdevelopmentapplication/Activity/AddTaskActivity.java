@@ -24,12 +24,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
     Spinner sp_category, sp_character, sp_situation, sp_priority, sp_complete;
     TextView tv_categoryLabel, tv_dateLabel, tv_date;
-    EditText et_date, et_output, et_priority, et_duration, et_complete, et_description, et_solution;
-    Button btn_show, btn_save;
+    EditText et_date, et_output, et_duration, et_description, et_solution;
+    Button btn_show, btn_save,btn_update;
 
     SpinnerHelper spinnerHelper = new SpinnerHelper();
     String TAG = "ListenerPosition";
     Task task;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class AddTaskActivity extends AppCompatActivity {
         et_description = findViewById(R.id.et_description);
         et_solution = findViewById(R.id.et_solution);
         btn_save = findViewById(R.id.btn_save);
+        btn_update=findViewById(R.id.btn_update);
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -70,7 +72,10 @@ public class AddTaskActivity extends AppCompatActivity {
         //intent
         String intentCheck=getIntent().getStringExtra("category");
         if(intentCheck==null){
+            btn_save.setVisibility(View.GONE);
+            btn_update.setVisibility(View.VISIBLE);
             task=new Task();
+            id=getIntent().getIntExtra("id",0);
             task.setCategory(getIntent().getIntExtra("category",0));
             task.setSituation(getIntent().getIntExtra("situation",0));
             task.setCharacter(getIntent().getIntExtra("character",0));
@@ -83,6 +88,15 @@ public class AddTaskActivity extends AppCompatActivity {
             task.setSolution(getIntent().getStringExtra("solution"));
 
             sp_category.setSelection(task.getCategory());
+            sp_situation.setSelection(task.getSituation());
+            sp_character.setSelection(task.getCharacter());
+            sp_priority.setSelection(task.getPriority());
+            sp_complete.setSelection(task.getComplete());
+
+            tv_date.setText(task.getDate());
+            et_output.setText(task.getOutput());
+            et_duration.setText(task.getDuration());
+            et_solution.setText(task.getSolution());
         }
     }
 
@@ -132,6 +146,14 @@ public class AddTaskActivity extends AppCompatActivity {
         task.setSolution(et_solution.getText().toString());
 
         return task;
+    }
+
+    public void updateData(View view) {
+        Task task=getFieldsValues();
+        task.setId(id);
+        boolean result = TaskDB.updateData(task);
+        Toast.makeText(this, "Update: "+result, Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
 
