@@ -60,7 +60,7 @@ public class TaskDB {
     }
 
     public static boolean updateData(Task task) {
-        boolean updated = easyDB.updateData(1, task.getCharacter())
+        boolean updated = easyDB.updateData(1, task.getCategory())
                 .updateData(2, task.getDate())
                 .updateData(3, task.getSituation())
                 .updateData(4, task.getCharacter())

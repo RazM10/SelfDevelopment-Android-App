@@ -25,12 +25,13 @@ public class AddTaskActivity extends AppCompatActivity {
     Spinner sp_category, sp_character, sp_situation, sp_priority, sp_complete;
     TextView tv_categoryLabel, tv_dateLabel, tv_date;
     EditText et_date, et_output, et_duration, et_description, et_solution;
-    Button btn_show, btn_save,btn_update;
+    Button btn_show, btn_save, btn_update;
 
     SpinnerHelper spinnerHelper = new SpinnerHelper();
     String TAG = "ListenerPosition";
     Task task;
-    int id;
+    int id = -1;
+    public static boolean isUpdate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class AddTaskActivity extends AppCompatActivity {
         et_description = findViewById(R.id.et_description);
         et_solution = findViewById(R.id.et_solution);
         btn_save = findViewById(R.id.btn_save);
-        btn_update=findViewById(R.id.btn_update);
+        btn_update = findViewById(R.id.btn_update);
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -70,17 +71,17 @@ public class AddTaskActivity extends AppCompatActivity {
         spinnerHelper.setSpinnerAdapter(this, StringArrays.complete, sp_complete);
 
         //intent
-        String intentCheck=getIntent().getStringExtra("category");
-        if(intentCheck==null){
+        if (isUpdate==true) {
+            isUpdate=false;
             btn_save.setVisibility(View.GONE);
             btn_update.setVisibility(View.VISIBLE);
-            task=new Task();
-            id=getIntent().getIntExtra("id",0);
-            task.setCategory(getIntent().getIntExtra("category",0));
-            task.setSituation(getIntent().getIntExtra("situation",0));
-            task.setCharacter(getIntent().getIntExtra("character",0));
-            task.setPriority(getIntent().getIntExtra("priority",0));
-            task.setComplete(getIntent().getIntExtra("complete",0));
+            task = new Task();
+            id = getIntent().getIntExtra("id", 0);
+            task.setCategory(getIntent().getIntExtra("category", 0));
+            task.setSituation(getIntent().getIntExtra("situation", 0));
+            task.setCharacter(getIntent().getIntExtra("character", 0));
+            task.setPriority(getIntent().getIntExtra("priority", 0));
+            task.setComplete(getIntent().getIntExtra("complete", 0));
             task.setDate(getIntent().getStringExtra("date"));
             task.setOutput(getIntent().getStringExtra("output"));
             task.setDuration(getIntent().getStringExtra("duration"));
@@ -149,10 +150,10 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     public void updateData(View view) {
-        Task task=getFieldsValues();
+        Task task = getFieldsValues();
         task.setId(id);
         boolean result = TaskDB.updateData(task);
-        Toast.makeText(this, "Update: "+result, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Update: " + result, Toast.LENGTH_SHORT).show();
         finish();
     }
 }

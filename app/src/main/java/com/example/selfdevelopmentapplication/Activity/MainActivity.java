@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void deleteSelectedTask(int id){
+        boolean result=TaskDB.deleteRow(id);
+        Toast.makeText(context, "Delete: "+result, Toast.LENGTH_SHORT).show();
+        onResume();
+    }
+
 
     @Override
     protected void onResume() {

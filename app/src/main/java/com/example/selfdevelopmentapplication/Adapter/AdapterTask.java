@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -43,25 +44,34 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
         final Task task = taskArrayList.get(position);
         holder.tv_category.setText(StringArrays.category[task.getCategory()]);
+        holder.tv_priority.setText("Priority : "+task.getPriority());
 
-        holder.linearLayout_task.setOnClickListener(new View.OnClickListener() {
+        holder.iv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, AddTaskActivity.class);
+                Intent intent = new Intent(context, AddTaskActivity.class);
 
-                intent.putExtra("id",task.getId());
-                intent.putExtra("category",task.getCategory());
-                intent.putExtra("date",task.getDate());
-                intent.putExtra("situation",task.getSituation());
-                intent.putExtra("character",task.getCharacter());
-                intent.putExtra("output",task.getOutput());
-                intent.putExtra("priority",task.getPriority());
-                intent.putExtra("duration",task.getDuration());
-                intent.putExtra("complete",task.getComplete());
-                intent.putExtra("description",task.getDescription());
-                intent.putExtra("solution",task.getSolution());
+                intent.putExtra("id", task.getId());
+                intent.putExtra("category", task.getCategory());
+                intent.putExtra("date", task.getDate());
+                intent.putExtra("situation", task.getSituation());
+                intent.putExtra("character", task.getCharacter());
+                intent.putExtra("output", task.getOutput());
+                intent.putExtra("priority", task.getPriority());
+                intent.putExtra("duration", task.getDuration());
+                intent.putExtra("complete", task.getComplete());
+                intent.putExtra("description", task.getDescription());
+                intent.putExtra("solution", task.getSolution());
 
+                AddTaskActivity.isUpdate=true;
                 context.startActivity(intent);
+            }
+        });
+        holder.iv_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ((MainActivity)MainActivity.context).deleteSelectedTask(task.getId());
+                ((MainActivity)MainActivity.context).deleteSelectedTask(task.getId());
             }
         });
     }
@@ -73,14 +83,18 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
 
     class ViewHolderClass extends RecyclerView.ViewHolder {
 
-        TextView tv_category;
+        TextView tv_category,tv_priority;
         LinearLayout linearLayout_task;
+        ImageView iv_edit, iv_delete;
 
         public ViewHolderClass(@NonNull View itemView) {
             super(itemView);
 
             linearLayout_task = itemView.findViewById(R.id.linearLayout_task);
             tv_category = itemView.findViewById(R.id.tv_category);
+            tv_priority = itemView.findViewById(R.id.tv_priority);
+            iv_edit = itemView.findViewById(R.id.iv_edit);
+            iv_delete = itemView.findViewById(R.id.iv_delete);
         }
     }
 
