@@ -17,7 +17,7 @@
             android:layout_toLeftOf="@+id/ll_action"
             android:id="@+id/imageViewTaskViewLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
@@ -29,6 +29,13 @@
                 android:text="Single Line Text"
                 android:textColor="#FFF"
                 android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="#FFF" />
 
             <TextView
                 android:id="@+id/tv_priority"

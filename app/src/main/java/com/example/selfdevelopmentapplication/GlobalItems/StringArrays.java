@@ -3,28 +3,33 @@ package com.example.selfdevelopmentapplication.GlobalItems;
 public class StringArrays {
 
     public static String[] category = new String[]{
+            "Work",
+            "Android",
+            "Android New",
+            "Study",
             "Wrong",
             "Motivation",
+            "Decision",
             "Lesson",
             "Story",
-            "Work",
             "Technical",
             "Habit",
             "Behave",
-            "none"
-    };
-
-    public static String[] situation = new String[]{
-            "Decision",
             "Thinking new",
             "Awareness",
             "Emergency",
             "Relational",
             "Health",
-            "Work and Career",
-            "Academic",
             "Choice",
-            "Strategic",
+            "none"
+    };
+
+    public static String[] situation = new String[]{
+            "Awareness",
+            "Emergency",
+            "Relational",
+            "Health",
+            "Choice",
             "none"
     };
 

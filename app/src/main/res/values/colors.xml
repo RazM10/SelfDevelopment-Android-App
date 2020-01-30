@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorDark">#2C2D2F</color>
     <color name="colorWhite">#fff</color>
+    <color name="colorTitleLetter">#212121</color>
+    <color name="coloInputText">#757575</color>
 </resources>

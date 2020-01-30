@@ -22,8 +22,9 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Category"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/sp_category"
@@ -43,8 +44,9 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Date"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -56,6 +58,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -87,7 +90,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Character"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <Spinner
@@ -108,8 +112,9 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Output"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp" />
 
             <EditText
                 android:id="@+id/et_output"
@@ -130,7 +135,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Priority"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <Spinner
@@ -150,7 +156,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Duration"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -172,7 +179,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Complete"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <Spinner
@@ -192,7 +200,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -218,7 +227,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Solution"
-                android:textSize="16dp"
+                android:textColor="@color/colorTitleLetter"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -243,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:onClick="saveData"
-                android:text="Save" />
+                android:text="Save"/>
 
             <Button
                 android:id="@+id/btn_update"

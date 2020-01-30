@@ -44,7 +44,9 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
         final Task task = taskArrayList.get(position);
         holder.tv_category.setText(StringArrays.category[task.getCategory()]);
-        holder.tv_priority.setText("Priority : "+task.getPriority());
+        holder.tv_date.setText("Date : "+task.getDate());
+        holder.tv_priority.setText("Priority : "+StringArrays.priority[task.getPriority()]+"  "+
+                "Complete : "+StringArrays.complete[task.getComplete()]);
 
         holder.iv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +85,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
 
     class ViewHolderClass extends RecyclerView.ViewHolder {
 
-        TextView tv_category,tv_priority;
+        TextView tv_category,tv_priority,tv_date;
         LinearLayout linearLayout_task;
         ImageView iv_edit, iv_delete;
 
@@ -93,6 +95,8 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
             linearLayout_task = itemView.findViewById(R.id.linearLayout_task);
             tv_category = itemView.findViewById(R.id.tv_category);
             tv_priority = itemView.findViewById(R.id.tv_priority);
+            tv_date=itemView.findViewById(R.id.tv_date);
+
             iv_edit = itemView.findViewById(R.id.iv_edit);
             iv_delete = itemView.findViewById(R.id.iv_delete);
         }
