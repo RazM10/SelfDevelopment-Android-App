@@ -2,9 +2,11 @@ package com.example.selfdevelopmentapplication.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,6 +35,10 @@ public class AddTaskActivity extends AppCompatActivity {
     int id = -1;
     public static boolean isUpdate = false;
 
+    //calender
+    String formattedDate;
+    int y, m, d;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +53,6 @@ public class AddTaskActivity extends AppCompatActivity {
         sp_character = findViewById(R.id.sp_character);
         sp_situation = findViewById(R.id.sp_situation);
         tv_categoryLabel = findViewById(R.id.tv_categoryLabel);
-        btn_show = findViewById(R.id.btn_show);
         tv_dateLabel = findViewById(R.id.tv_dateLabel);
         tv_date = findViewById(R.id.tv_date);
         et_output = findViewById(R.id.et_output);
@@ -61,8 +66,11 @@ public class AddTaskActivity extends AppCompatActivity {
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String formattedDate = df.format(c);
+        formattedDate = df.format(c);
         tv_date.setText(formattedDate);
+        y = Integer.parseInt(formattedDate.substring(0, 3));
+        m = Integer.parseInt(formattedDate.substring(5, 6));
+        d = Integer.parseInt(formattedDate.substring(8, 9));
 
         spinnerHelper.setSpinnerAdapter(this, StringArrays.category, sp_category);
         spinnerHelper.setSpinnerAdapter(this, StringArrays.character, sp_character);
@@ -71,8 +79,8 @@ public class AddTaskActivity extends AppCompatActivity {
         spinnerHelper.setSpinnerAdapter(this, StringArrays.complete, sp_complete);
 
         //intent
-        if (isUpdate==true) {
-            isUpdate=false;
+        if (isUpdate == true) {
+            isUpdate = false;
             btn_save.setVisibility(View.GONE);
             btn_update.setVisibility(View.VISIBLE);
             task = new Task();
@@ -111,19 +119,27 @@ public class AddTaskActivity extends AppCompatActivity {
         tv_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new DatePickerDialog(AddTaskActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        int mTemp = month + 1;
+                        String mSave = String.valueOf((mTemp > 9) ? mTemp : "0" + mTemp);
+                        tv_date.setText("" + year + "-" + mSave + "-" + dayOfMonth);
+                    }
+                }, 2020, 01, 01).show();
 
             }
         });
 
-        btn_show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddTaskActivity.this, "Position is: " + spinnerHelper.getPositionCategory()
-                                + " " + spinnerHelper.getPositionSituation() + " " + spinnerHelper.getPositionCharacter() + " " +
-                                spinnerHelper.getPositionPriority() + " " + spinnerHelper.getPositionComplete()
-                        , Toast.LENGTH_SHORT).show();
-            }
-        });
+//        btn_show.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(AddTaskActivity.this, "Position is: " + spinnerHelper.getPositionCategory()
+//                                + " " + spinnerHelper.getPositionSituation() + " " + spinnerHelper.getPositionCharacter() + " " +
+//                                spinnerHelper.getPositionPriority() + " " + spinnerHelper.getPositionComplete()
+//                        , Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public void saveData(View view) {
