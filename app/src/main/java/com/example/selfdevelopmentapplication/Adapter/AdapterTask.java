@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.selfdevelopmentapplication.Activity.AddTaskActivity;
+import com.example.selfdevelopmentapplication.Activity.DetailsActivity;
 import com.example.selfdevelopmentapplication.Activity.MainActivity;
 import com.example.selfdevelopmentapplication.GlobalItems.StringArrays;
 import com.example.selfdevelopmentapplication.Model.Task;
@@ -44,9 +45,18 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
         final Task task = taskArrayList.get(position);
         holder.tv_category.setText(StringArrays.category[task.getCategory()]);
-        holder.tv_date.setText("Date : "+task.getDate());
-        holder.tv_priority.setText("Priority : "+StringArrays.priority[task.getPriority()]+"  "+
-                "Complete : "+StringArrays.complete[task.getComplete()]);
+        holder.tv_date.setText("Date : " + task.getDate());
+        holder.tv_priority.setText("Priority : " + StringArrays.priority[task.getPriority()] + "  " +
+                "Complete : " + StringArrays.complete[task.getComplete()]);
+
+        holder.linearLayout_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("id", task.getId());
+                context.startActivity(intent);
+            }
+        });
 
         holder.iv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +75,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
                 intent.putExtra("description", task.getDescription());
                 intent.putExtra("solution", task.getSolution());
 
-                AddTaskActivity.isUpdate=true;
+                AddTaskActivity.isUpdate = true;
                 context.startActivity(intent);
             }
         });
@@ -73,7 +83,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
             @Override
             public void onClick(View v) {
 //                ((MainActivity)MainActivity.context).deleteSelectedTask(task.getId());
-                ((MainActivity)MainActivity.context).deleteSelectedTask(task.getId());
+                ((MainActivity) MainActivity.context).deleteSelectedTask(task.getId());
             }
         });
     }
@@ -85,7 +95,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
 
     class ViewHolderClass extends RecyclerView.ViewHolder {
 
-        TextView tv_category,tv_priority,tv_date;
+        TextView tv_category, tv_priority, tv_date;
         LinearLayout linearLayout_task;
         ImageView iv_edit, iv_delete;
 
@@ -95,7 +105,7 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
             linearLayout_task = itemView.findViewById(R.id.linearLayout_task);
             tv_category = itemView.findViewById(R.id.tv_category);
             tv_priority = itemView.findViewById(R.id.tv_priority);
-            tv_date=itemView.findViewById(R.id.tv_date);
+            tv_date = itemView.findViewById(R.id.tv_date);
 
             iv_edit = itemView.findViewById(R.id.iv_edit);
             iv_delete = itemView.findViewById(R.id.iv_delete);
