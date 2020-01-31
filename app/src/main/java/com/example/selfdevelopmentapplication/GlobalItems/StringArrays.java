@@ -3,6 +3,7 @@ package com.example.selfdevelopmentapplication.GlobalItems;
 public class StringArrays {
 
     public static String[] category = new String[]{
+            "Monthly Work",
             "Work",
             "Android",
             "Android New",
