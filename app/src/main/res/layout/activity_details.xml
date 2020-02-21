@@ -40,6 +40,27 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Duration/Edited"
+                android:textSize="18sp"
+                android:textColor="@color/colorTitleLetter"/>
+            <TextView
+                android:id="@+id/tv_duration"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text will show here"
+                android:textColor="@color/coloInputText"
+                android:textSize="16sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:elevation="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Description"
                 android:textSize="18sp"
                 android:textColor="@color/colorTitleLetter"/>

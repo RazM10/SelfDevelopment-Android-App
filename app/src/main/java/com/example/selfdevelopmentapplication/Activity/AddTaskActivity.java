@@ -39,6 +39,10 @@ public class AddTaskActivity extends AppCompatActivity {
     String formattedDate;
     int y, m, d;
 
+    //for edited date
+    SimpleDateFormat sdf;
+    String currentDateandTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,10 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     private void init() {
+        //for edited date
+        sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        currentDateandTime = sdf.format(new Date());
+
         sp_category = findViewById(R.id.sp_category);
         sp_character = findViewById(R.id.sp_character);
         sp_situation = findViewById(R.id.sp_situation);
@@ -104,7 +112,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
             tv_date.setText(task.getDate());
             et_output.setText(task.getOutput());
+            et_output.setSelection(et_output.getText().length());
             et_duration.setText(task.getDuration());
+            et_description.setText(task.getDescription());
             et_solution.setText(task.getSolution());
         }
     }
@@ -157,7 +167,7 @@ public class AddTaskActivity extends AppCompatActivity {
         task.setCharacter(spinnerHelper.getPositionCharacter());
         task.setOutput(et_output.getText().toString());
         task.setPriority(spinnerHelper.getPositionPriority());
-        task.setDuration(et_duration.getText().toString());
+        task.setDuration(et_duration.getText().toString()+"\n"+currentDateandTime);
         task.setComplete(spinnerHelper.getPositionComplete());
         task.setDescription(et_description.getText().toString());
         task.setSolution(et_solution.getText().toString());
