@@ -59,6 +59,12 @@ public class TaskDB {
         return task;
     }
 
+    public static ArrayList<Task> searchInColumnForAll(int columnNumber, String data, int limit) {
+        Cursor res = easyDB.searchInColumn(columnNumber, data, limit); // Here we passed limit = 1. Thus it will return only one row data with the matched column value
+        ArrayList<Task> tasks = getAllDataInModel(res);
+        return tasks;
+    }
+
     public static boolean updateData(Task task) {
         boolean updated = easyDB.updateData(1, task.getCategory())
                 .updateData(2, task.getDate())
@@ -100,21 +106,23 @@ public class TaskDB {
 
     public static ArrayList<Task> getAllDataInModel(Cursor res) {
         ArrayList<Task> taskArrayList = new ArrayList<>();
-        while (res.moveToNext()) {
-            Task task = new Task();
-            task.setId(res.getInt(0));
-            task.setCategory(res.getInt(1));
-            task.setDate(res.getString(2));
-            task.setSituation(res.getInt(3));
-            task.setCharacter(res.getInt(4));
-            task.setOutput(res.getString(5));
-            task.setPriority(res.getInt(6));
-            task.setDuration(res.getString(7));
-            task.setComplete(res.getInt(8));
-            task.setDescription(res.getString(9));
-            task.setSolution(res.getString(10));
+        if (res != null) {
+            while (res.moveToNext()) {
+                Task task = new Task();
+                task.setId(res.getInt(0));
+                task.setCategory(res.getInt(1));
+                task.setDate(res.getString(2));
+                task.setSituation(res.getInt(3));
+                task.setCharacter(res.getInt(4));
+                task.setOutput(res.getString(5));
+                task.setPriority(res.getInt(6));
+                task.setDuration(res.getString(7));
+                task.setComplete(res.getInt(8));
+                task.setDescription(res.getString(9));
+                task.setSolution(res.getString(10));
 
-            taskArrayList.add(task);
+                taskArrayList.add(task);
+            }
         }
         return taskArrayList;
     }

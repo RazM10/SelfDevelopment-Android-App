@@ -29,6 +29,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.github.p32929:AndroidEasySQL-Library:1.4.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    //jackdialog
+    //jack dialog
     implementation 'com.github.RazM10:JackDialog-Android:0.0.1'
+    //Material Drawer
+    implementation "com.mikepenz:materialdrawer:6.1.2"
 }
