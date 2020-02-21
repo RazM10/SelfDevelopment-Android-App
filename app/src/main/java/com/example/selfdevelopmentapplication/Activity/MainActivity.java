@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Task> taskArrayList;
 
     public static Context context;
+    //trcking
+    public static String item = "Home";
+    public static boolean itemBackPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,14 +106,20 @@ public class MainActivity extends AppCompatActivity {
     private void drawerClickedItem(long identifier) {
         switch ((int) identifier) {
             case 0:
+                item = "Home";
+                itemBackPressed = false;
                 adapterTask.replaceArrayList(TaskDB.getAllData());
                 Toast.makeText(MainActivity.this, "Clicked on Home", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
+                itemBackPressed = true;
+                item = "Complete";
                 adapterTask.replaceArrayList(TaskDB.searchInColumnForAll(8, "1", -1));
                 Toast.makeText(MainActivity.this, "Clicked on Complete", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
+                itemBackPressed = true;
+                item = "Not Complete";
                 adapterTask.replaceArrayList(TaskDB.searchInColumnForAll(8, "0", -1));
                 Toast.makeText(MainActivity.this, "Clicked on Not Complete", Toast.LENGTH_SHORT).show();
                 break;
@@ -127,6 +136,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapterTask.replaceArrayList(TaskDB.getAllData());
+        if (item.equals("Home"))
+            adapterTask.replaceArrayList(TaskDB.getAllData());
+        else if (item.equals("Complete"))
+            adapterTask.replaceArrayList(TaskDB.searchInColumnForAll(8, "1", -1));
+        else
+            adapterTask.replaceArrayList(TaskDB.searchInColumnForAll(8, "0", -1));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (itemBackPressed == false) {
+            super.onBackPressed();
+            item = "Home";
+            onResume();
+        } else {
+            itemBackPressed = false;
+            item = "Home";
+            materialDrawer();
+            onResume();
+        }
+
     }
 }
