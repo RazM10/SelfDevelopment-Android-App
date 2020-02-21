@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dialoglibrary.JackDialog;
+import com.example.dialoglibrary.PositiveButtonListener;
 import com.example.selfdevelopmentapplication.Activity.AddTaskActivity;
 import com.example.selfdevelopmentapplication.Activity.DetailsActivity;
 import com.example.selfdevelopmentapplication.Activity.MainActivity;
@@ -82,8 +86,19 @@ public class AdapterTask extends RecyclerView.Adapter<AdapterTask.ViewHolderClas
         holder.iv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ((MainActivity)MainActivity.context).deleteSelectedTask(task.getId());
-                ((MainActivity) MainActivity.context).deleteSelectedTask(task.getId());
+                JackDialog jackDialog = new JackDialog(context);
+                jackDialog
+                        .setTitle("Delete")
+                        .setDescription("Want to Delete?")
+                        .setPositiveButton("Delete", new PositiveButtonListener() {
+                            @Override
+                            public void onPositiveButtonClickListener(AlertDialog dialog) {
+                                ((MainActivity) MainActivity.context).deleteSelectedTask(task.getId());
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("Cancel")
+                        .show();
             }
         });
     }
