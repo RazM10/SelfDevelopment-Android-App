@@ -7,4 +7,5 @@
     <color name="colorWhite">#fff</color>
     <color name="colorTitleLetter">#212121</color>
     <color name="coloInputText">#757575</color>
+    <color name="coloGray">#A9A9A9</color>
 </resources>
