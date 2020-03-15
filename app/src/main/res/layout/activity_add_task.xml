@@ -213,7 +213,8 @@
                 android:padding="5dp"
                 android:scrollIndicators="right"
                 android:singleLine="false"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:onClick="getDescription"/>
         </LinearLayout>
 
         <LinearLayout

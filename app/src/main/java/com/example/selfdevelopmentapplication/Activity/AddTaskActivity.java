@@ -3,6 +3,7 @@ package com.example.selfdevelopmentapplication.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -181,6 +182,16 @@ public class AddTaskActivity extends AppCompatActivity {
         boolean result = TaskDB.updateData(task);
         Toast.makeText(this, "Update: " + result, Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    public void getDescription(View view) {
+//        startActivity(new Intent(AddTaskActivity.this,TypedTextActivity.class));
+        String text = String.valueOf(et_description.getText());
+
+        Intent intent = new Intent(AddTaskActivity.this,TypedTextActivity.class);
+        intent.putExtra("text",text);
+        startActivity(intent);
+
     }
 }
 
