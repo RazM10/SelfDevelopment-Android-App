@@ -27,6 +27,7 @@
         android:layout_alignParentRight="true"
         android:background="@color/colorAccent"
         android:padding="5dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:onClick="sendText"/>
 
 </RelativeLayout>

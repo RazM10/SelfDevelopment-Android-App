@@ -44,6 +44,10 @@ public class AddTaskActivity extends AppCompatActivity {
     SimpleDateFormat sdf;
     String currentDateandTime;
 
+    //for return text from TypedTextActivity.java
+    public static boolean isReturned = false;
+    public static String fullDescriptionText="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,6 +196,17 @@ public class AddTaskActivity extends AppCompatActivity {
         intent.putExtra("text",text);
         startActivity(intent);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(isReturned==true){
+            isReturned=false;
+            et_description.setText(fullDescriptionText);
+            et_description.setSelection(fullDescriptionText.length());
+            fullDescriptionText="";
+        }
     }
 }
 
