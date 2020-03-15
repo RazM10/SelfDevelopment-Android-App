@@ -1,70 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout_task"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#2C2D2F"
     android:orientation="vertical"
     android:layout_margin="5dp"
     android:elevation="5dp"
     android:padding="4dp">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_toLeftOf="@+id/ll_action"
-            android:id="@+id/imageViewTaskViewLinearLayout"
+        android:layout_height="wrap_content"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="5dp">
+        <RelativeLayout
+            android:elevation="0.9dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_category"
+            <LinearLayout
+                android:layout_toLeftOf="@+id/ll_action"
+                android:id="@+id/imageViewTaskViewLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Single Line Text"
-                android:textColor="#FFF"
-                android:textSize="24sp" />
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="#FFF" />
+                <TextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Single Line Text"
+                    android:textColor="#2C2D2F"
+                    android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/tv_priority"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Priority"
-                android:textColor="#FFF" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textColor="#2C2D2F" />
 
-        <LinearLayout
-            android:id="@+id/ll_action"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/iv_edit"
-                android:padding="5dp"
+                <TextView
+                    android:id="@+id/tv_priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Priority"
+                    android:textColor="#2C2D2F" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_action"
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"/>
-            <ImageView
-                android:id="@+id/iv_delete"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete_black_24dp"/>
-        </LinearLayout>
-    </RelativeLayout>
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_edit"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit_black_24dp"/>
+                <ImageView
+                    android:id="@+id/iv_delete"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete_black_24dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
 
