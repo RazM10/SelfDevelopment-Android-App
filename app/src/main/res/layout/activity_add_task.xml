@@ -280,7 +280,8 @@
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
                     android:maxHeight="100dp"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:onClick="getDescription"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -335,14 +336,15 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@color/colorAccent"
+                android:background="@drawable/round_button"
                 android:onClick="saveData"
                 android:text="Save"
                 android:textColor="#fff" />
@@ -352,7 +354,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@color/colorAccent"
+                android:background="@drawable/round_button"
                 android:onClick="updateData"
                 android:text="Update"
                 android:textColor="#fff"
