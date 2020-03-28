@@ -5,13 +5,12 @@ public class StringArrays {
     public static String[] category = new String[]{
             "Monthly Work",
             "Work",
-            "Wrong",
+            "Fix",
             "Motivation",
-            "Story",
             "Technical",
             "Learn",
             "Behave",
-            "Can do",
+            "Strong Point",
             "none"
     };
 
